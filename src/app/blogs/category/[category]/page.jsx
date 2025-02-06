@@ -1,3 +1,4 @@
+// Move from /blogs/[category] to /blogs/category/[category]
 import { Suspense } from 'react';
 import BlogCard from "@/components/blogCard";
 import Link from 'next/link';
