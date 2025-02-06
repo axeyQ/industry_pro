@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import BlogCard from "@/components/blogCard";
 import Link from 'next/link';
+import BlogCard from '@/components/BlogCard';
 
 async function getBlogsByCategory(category) {
   try {
