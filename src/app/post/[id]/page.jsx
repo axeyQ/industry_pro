@@ -30,17 +30,6 @@ export default async function BlogPost({ params }) {
       <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
         ← Back to Home
       </Link>
-
-      <div className="relative w-full h-[400px] mb-8">
-        <Image
-          src={blog.bannerImage || '/default-banner.jpg'}
-          alt={blog.title}
-          fill
-          className="object-cover rounded-lg"
-          priority
-        />
-      </div>
-
       <div className="flex items-center gap-4 mb-6">
         <div className="h-12 w-12 relative rounded-full overflow-hidden">
           <Image
@@ -72,6 +61,17 @@ export default async function BlogPost({ params }) {
           {blog.category}
         </span>
       </div>
+      <div className="relative w-full h-[400px] mb-8">
+        <Image
+          src={blog.bannerImage || '/default-banner.jpg'}
+          alt={blog.title}
+          fill
+          className="object-cover rounded-lg"
+          priority
+        />
+      </div>
+
+
 
       <div 
         className="prose prose-lg max-w-none"

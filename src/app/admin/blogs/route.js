@@ -8,12 +8,6 @@ import { writeFile } from 'fs/promises';
 import path from 'path';
 import os from 'os';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 const parseForm = async (request) => {
   const form = formidable({
     uploadDir: './public/uploads',
@@ -63,20 +57,17 @@ export async function GET(request) {
   try {
     await connectDB();
     
-    // Get the parent category from query parameters
     const { searchParams } = new URL(request.url);
     const parentCategory = searchParams.get('parentCategory');
     
-    // Build query
     const query = {
-      published: true, // Only get published blogs
-      ...(parentCategory && { parentCategory }), // Add parent category filter if provided
+      published: true,
+      ...(parentCategory && { parentCategory }),
     };
 
-    // Get blogs with the filter
     const blogs = await Blog.find(query)
-      .sort({ createdAt: -1 }) // Sort by newest first
-      .limit(6); // Limit to 6 blogs per category
+      .sort({ createdAt: -1 })
+      .limit(6);
 
     return NextResponse.json(
       { success: true, data: blogs },
