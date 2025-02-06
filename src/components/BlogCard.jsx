@@ -22,7 +22,7 @@ export default function BlogCard({ blog }) {
   }
 
   return (
-    <Link href={`/blogs/${blog._id}`} className="max-w-xs w-full group/card">
+    <Link href={`/post/${blog._id}`} className="max-w-xs w-full group/card">
       <div
         className={cn(
           "cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",

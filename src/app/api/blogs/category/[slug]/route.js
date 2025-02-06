@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/utils/db';
 import Blog from '@/models/Blog';
+import connectDB from '@/config/database';
 
 export async function GET(request, { params }) {
   try {
     await connectDB();
-    const category = decodeURIComponent(params.category);
+    const category = decodeURIComponent(params.slug);
 
     const blogs = await Blog.find({ parentCategory: category });
     
@@ -16,7 +16,7 @@ export async function GET(request, { params }) {
   } catch (error) {
     console.error('Error fetching blogs by category:', error);
     return NextResponse.json(
-      { success: false, message: error.message || 'Failed to fetch blogs' },
+      { success: false, message: error.message },
       { status: 500 }
     );
   }
